@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css">
+    <style>
+        code{
+        background-color: darkblue;
+        display: block;
+        font-size: .32em;
+        padding: 10px;
+        text-align: left;
+         color: lightblue;
+        }
+    </style>
+<link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css">
+</head>
+<body> 
+    <div class="reveal">
+        <div class="slides">
+          <section>
+            Avoir des outils pour travailler sur son ordinateur</section>
+          <section>
+                D'abord, les logiciels de fond<br><br>
+                <img src="./img/Docker-Symbol.png" style="max-width: 150px;" alt="">
+                <p>Un logiciel nécessaire à DDEV, qui gère des environnements virtuels, ou "containers".</p>
+                <a href="https://www.docker.com/">https://www.docker.com/</a>
+            </section>
+            <section>
+                <img src="./img/dark-ddev.svg" style="max-width: 250px;" alt="">
+                <p>
+                    C'est un logiciel qui s'occupe de faire tourner les différents programmes qui font un site web (Apache, Nginx, PHP, Node…), sans avoir à s'en occuper manuellement, et en évitant des soucis d'incompatibilités <br>
+                </p>
+                <a href="https://ddev.com/">https://ddev.com/</a>
+        </section>
+        <section>
+            Ensuite, les outils pour gérer le codes <br>
+            <img src="./img/codium_cnl.svg" style="max-width: 200px;" alt=""><br>
+            <p>
+                VSCodium, un éditeur de texte opensource et très adaptable 
+            </p>
+            <a href="https://vscodium.com/#install">https://vscodium.com/#install</a>
+        </section>  
+        <section>
+            <p>
+                Utiliser git et github
+            </p>
+            <img src="./img/git-icon-logo-png-transparent.png" style="max-width: 150px;" alt=""><br>
+            <p>
+                <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>
+            </p>
+            <img src="./img/github_PNG28.png" style="max-width: 150px;" alt="">
+            <p>
+                <a href="https://github.com/">https://github.com/</a>
+            </p>
+        </section>  
+        <section>
+            <p>Git et Github ça permet par le terminal de récupérer le code d'autres personnes, et de sauvegarder le sien.</p>
+        </section>
+        <section>
+
+            <p>
+                Structure d'une demande à la base de donnée :  <br>
+            </p>
+                <code>
+                    <em style="color:lightgreen">(l'adresse du site) / (le dossier cockpit) / (api) / (le type de ressource, toujours content) / </em> <em style="color:lightcoral"> (type d'objet) / (l'objet) </em>
+                </code>
+            <p>Exemple, pour demander les infos d'une page "Bio" :</p>
+            <code>
+                fetch('https://site.ddev.site/cockpit-core/api/content/item/Bio',    // L'adresse correspond à l'information que l'on souhaite obtenir <br>
+                {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;headers: // Identification pour récupérer les informations, qui est public, d'où l'importance d'un rôle à part<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;{  <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    "api-key": "API-ee26e95b24e7d4b5bba7e3119d3e5ebcb6d2de1d", <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;} <br>
+                } <br>
+                ).then(response => response.json()).then(data=>console.log(data));            
+            </code>
+        </section>
+        </div> 
+      </div>
+      <script src="./node_modules/reveal.js/dist/reveal.js"></script>
+      <script>
+        Reveal.initialize();
+      </script>
+</body>
+</html>
+<script>
+    // (l'adresse du site) (le dossier cockpit) / (api) / (le type de ressource, toujours content) / (type d'objet) / (l'objet)
+    
+    fetch('https://site.ddev.site/cockpit-core/api/content/item/Bio',    // L'adresse correspond à l'information que l'on souhaite obtenir
+    {
+        headers: { // Identification pour récupéré les informations, qui est public, d'où l'importance d'un rôle à part
+            "api-key": "API-ee26e95b24e7d4b5bba7e3119d3e5ebcb6d2de1d",
+        }
+    }
+    ).then(response => response.json()).then(data=>console.log(data));
+</script>
